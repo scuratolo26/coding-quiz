@@ -35,8 +35,7 @@ function countdown() {
         } else {
             timerEl.textContent = '';
             clearInterval(timeInterval);
-            main.textContent = "";
-            h1El.textContent = "Quiz Time is up!";
+            quizOver();
         }
     }, 1000);
 }
@@ -46,7 +45,7 @@ function countdown() {
 // QUIZ QUESTIONS
 function question1() {
     main.textContent = "";
-    h1El.textContent = "Commonly used data types do NOT include:";
+    h1El.textContent = "1. Commonly used data types do NOT include:";
     var orderedListElements = [btn1, btn2, btn3, btn4];
     var answers = ['1. Strings', '2. Booleans', '3. Alerts', '4. Numbers'];
 
@@ -78,11 +77,9 @@ function question1() {
     }
 }
 
-
-
 function question2() {
     main.textContent = "";
-    h1El.textContent = "The condition in an if / else statement is enclosed with __________.";
+    h1El.textContent = "2. The condition in an if / else statement is enclosed with __________.";
     var orderedListElements = [btn1, btn2, btn3, btn4];
     var answers = ['1. quotes', '2. curly brackets', '3. parenthesis', '4. square brackets'];
 
@@ -116,7 +113,7 @@ function question2() {
 
 function question3() {
     main.textContent = "";
-    h1El.textContent = "Arrays in JavaScript can be used to store __________.";
+    h1El.textContent = "3. Arrays in JavaScript can be used to store __________.";
     var orderedListElements = [btn1, btn2, btn3, btn4];
     var answers = ['1. numbers and strings', '2. other arrays', '3. booleans', '4. all of the above'];
 
@@ -150,7 +147,7 @@ function question3() {
 
 function question4() {
     main.textContent = "";
-    h1El.textContent = "String values must be enclosed within _______ when being assigned to variables.";
+    h1El.textContent = " 4. String values must be enclosed within _______ when being assigned to variables.";
     var orderedListElements = [btn1, btn2, btn3, btn4];
     var answers = ['1. commas', '2. curly brackets', '3. quotes', '4. parenthesis'];
 
@@ -184,9 +181,9 @@ function question4() {
 
 function question5() {
     main.textContent = "";
-    h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
+    h1El.textContent = "5. A very useful tool used during development and debugging for printing content to the debugger is:";
     var orderedListElements = [btn1, btn2, btn3, btn4];
-    var answers = ['1. console,log', '2. terminal/bash', '3. for loops', '4. JavaScript'];
+    var answers = ['1. console.log', '2. terminal/bash', '3. for loops', '4. JavaScript'];
 
     for (var index = 0; index < 4; index = index + 1) {
         var currentElement = orderedListElements[index];
@@ -195,23 +192,27 @@ function question5() {
         currentElement.textContent = currentAns;
 
         main.appendChild(currentElement);
-        currentElement.setAttribute('class', 'buttons');
+        currentElement.className = "buttons"
         currentElement.setAttribute('id', 'next' + index);
     };
     document.getElementById("next0").onclick = function () {
         correct();
+        quizOver();
     }
     document.getElementById("next1").onclick = function () {
         incorrect();
+        quizOver();
     }
     document.getElementById("next2").onclick = function () {
         incorrect();
+        quizOver();
     }
     document.getElementById("next3").onclick = function () {
         incorrect();
+        quizOver();
     }
 }
-
+// END QUIZ QUESTIONS
 function correct() {
     score = score + 1;
     console.log(score);
@@ -224,7 +225,34 @@ function incorrect() {
     result.appendChild(ansH2El);
     ansH2El.textContent = "Incorrect."
 }
-// END QUIZ QUESTIONS
+
+function quizOver() {
+    // display score
+    main.textContent = "";
+    h1El.textContent = "All done!"
+    main.textContent = "Your final score is " + score + "/5";
+
+    // display input box & submit button
+    var quizOver = document.getElementById('quiz-over');
+    quizOver.setAttribute('style', 'display:block;');
+
+
+    var submitBtn = document.querySelector("#submit");
+
+
+    submitBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        var initials = document.querySelector("#initials").value;
+        localStorage.setItem(initials, score);
+        var highScore = initials + " " + score;
+        console.log(initials);
+        main.textContent = highScore;
+        quizOver.setAttribute('style', 'display:none');
+        result.setAttribute('style', 'display:none');
+    });
+}
+
+
 
 // EVENT LISTENERS
 document.getElementById("startBtn").addEventListener("click", startQuiz)
