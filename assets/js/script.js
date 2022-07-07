@@ -1,4 +1,19 @@
+// VARIABLES
 var startBtnEl = document.getElementById('startBtn');
+var timeLeft = 0;
+var timerEl = document.getElementById('time');
+var main = document.getElementById('main');
+var result = document.getElementById('result');
+var h1El = document.getElementById('heading-text');
+var btn1 = document.createElement("button");
+var btn2 = document.createElement("button");
+var btn3 = document.createElement("button");
+var btn4 = document.createElement("button");
+var ansH2El = document.createElement("h2");
+
+var score = 0;
+
+// END VARIABLES
 
 function startQuiz() {
     startBtnEl.setAttribute('style', 'display: none;')
@@ -7,10 +22,8 @@ function startQuiz() {
 }
 
 // TIMER
-var timerEl = document.getElementById('time');
-
 function countdown() {
-    var timeLeft = 120;
+    timeLeft = 120;
 
     var timeInterval = setInterval(function () {
         if (timeLeft > 1) {
@@ -31,14 +44,6 @@ function countdown() {
 // END TIMER
 
 // QUIZ QUESTIONS
-var main = document.getElementById('main');
-var h1El = document.getElementById('heading-text');
-var btn1 = document.createElement("button");
-var btn2 = document.createElement("button");
-var btn3 = document.createElement("button");
-var btn4 = document.createElement("button");
-var score = 0;
-
 function question1() {
     main.textContent = "";
     h1El.textContent = "Commonly used data types do NOT include:";
@@ -55,18 +60,169 @@ function question1() {
         currentElement.setAttribute('class', 'buttons');
         currentElement.setAttribute('id', 'next' + index);
     };
-    document.getElementById("next0").addEventListener("click", question2);
-    document.getElementById("next1").addEventListener("click", question2);
-    document.getElementById("next2").onclick = function () {
+    document.getElementById("next0").onclick = function () {
+        incorrect();
         question2();
-        score = score + 1;
-        console.log(score);
     }
-    document.getElementById("next3").addEventListener("click", question2);
+    document.getElementById("next1").onclick = function () {
+        incorrect();
+        question2();
+    }
+    document.getElementById("next2").onclick = function () {
+        correct();
+        question2();
+    }
+    document.getElementById("next3").onclick = function () {
+        incorrect();
+        question2();
+    }
 }
 
+
+
 function question2() {
-    console.log("success");
+    main.textContent = "";
+    h1El.textContent = "The condition in an if / else statement is enclosed with __________.";
+    var orderedListElements = [btn1, btn2, btn3, btn4];
+    var answers = ['1. quotes', '2. curly brackets', '3. parenthesis', '4. square brackets'];
+
+    for (var index = 0; index < 4; index = index + 1) {
+        var currentElement = orderedListElements[index];
+        var currentAns = answers[index];
+
+        currentElement.textContent = currentAns;
+
+        main.appendChild(currentElement);
+        currentElement.setAttribute('class', 'buttons');
+        currentElement.setAttribute('id', 'next' + index);
+    };
+    document.getElementById("next0").onclick = function () {
+        incorrect();
+        question3();
+    }
+    document.getElementById("next1").onclick = function () {
+        incorrect();
+        question3();
+    }
+    document.getElementById("next2").onclick = function () {
+        correct();
+        question3();
+    }
+    document.getElementById("next3").onclick = function () {
+        incorrect();
+        question3();
+    }
+}
+
+function question3() {
+    main.textContent = "";
+    h1El.textContent = "Arrays in JavaScript can be used to store __________.";
+    var orderedListElements = [btn1, btn2, btn3, btn4];
+    var answers = ['1. numbers and strings', '2. other arrays', '3. booleans', '4. all of the above'];
+
+    for (var index = 0; index < 4; index = index + 1) {
+        var currentElement = orderedListElements[index];
+        var currentAns = answers[index];
+
+        currentElement.textContent = currentAns;
+
+        main.appendChild(currentElement);
+        currentElement.setAttribute('class', 'buttons');
+        currentElement.setAttribute('id', 'next' + index);
+    };
+    document.getElementById("next0").onclick = function () {
+        incorrect();
+        question4();
+    }
+    document.getElementById("next1").onclick = function () {
+        incorrect();
+        question4();
+    }
+    document.getElementById("next2").onclick = function () {
+        incorrect();
+        question4();
+    }
+    document.getElementById("next3").onclick = function () {
+        correct();
+        question4();
+    }
+}
+
+function question4() {
+    main.textContent = "";
+    h1El.textContent = "String values must be enclosed within _______ when being assigned to variables.";
+    var orderedListElements = [btn1, btn2, btn3, btn4];
+    var answers = ['1. commas', '2. curly brackets', '3. quotes', '4. parenthesis'];
+
+    for (var index = 0; index < 4; index = index + 1) {
+        var currentElement = orderedListElements[index];
+        var currentAns = answers[index];
+
+        currentElement.textContent = currentAns;
+
+        main.appendChild(currentElement);
+        currentElement.setAttribute('class', 'buttons');
+        currentElement.setAttribute('id', 'next' + index);
+    };
+    document.getElementById("next0").onclick = function () {
+        incorrect();
+        question5();
+    }
+    document.getElementById("next1").onclick = function () {
+        incorrect();
+        question5();
+    }
+    document.getElementById("next2").onclick = function () {
+        correct();
+        question5();
+    }
+    document.getElementById("next3").onclick = function () {
+        incorrect();
+        question5();
+    }
+}
+
+function question5() {
+    main.textContent = "";
+    h1El.textContent = "A very useful tool used during development and debugging for printing content to the debugger is:";
+    var orderedListElements = [btn1, btn2, btn3, btn4];
+    var answers = ['1. console,log', '2. terminal/bash', '3. for loops', '4. JavaScript'];
+
+    for (var index = 0; index < 4; index = index + 1) {
+        var currentElement = orderedListElements[index];
+        var currentAns = answers[index];
+
+        currentElement.textContent = currentAns;
+
+        main.appendChild(currentElement);
+        currentElement.setAttribute('class', 'buttons');
+        currentElement.setAttribute('id', 'next' + index);
+    };
+    document.getElementById("next0").onclick = function () {
+        correct();
+    }
+    document.getElementById("next1").onclick = function () {
+        incorrect();
+    }
+    document.getElementById("next2").onclick = function () {
+        incorrect();
+    }
+    document.getElementById("next3").onclick = function () {
+        incorrect();
+    }
+}
+
+function correct() {
+    score = score + 1;
+    console.log(score);
+    result.appendChild(ansH2El);
+    ansH2El.textContent = "Correct!";
+}
+
+function incorrect() {
+    timeLeft = timeLeft - 10;
+    result.appendChild(ansH2El);
+    ansH2El.textContent = "Incorrect."
 }
 // END QUIZ QUESTIONS
 
