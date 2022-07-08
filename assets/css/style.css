@@ -1,10 +1,68 @@
-.container {
+.textContainer {
     margin: auto;
-    width: 100%;
+    width: 50%;
     height: 100%;
     text-align: center;
 }
 
 #quiz-over {
     display: none;
+}
+
+.time {
+    text-align: right;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.heading-text {
+    font-size: 35px;
+}
+
+.buttons,
+.startBtn {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.buttons:hover,
+.buttons:focus,
+.startBtn:hover,
+.startBtn:focus {
+  background-color: #F082AC;
+}
+
+.buttonContainer {
+    padding: 30px;
+}
+
+.buttons {
+    display: block;
+    margin: 10px;
+}
+
+.initialInput {
+    border-radius: 8px;
 }

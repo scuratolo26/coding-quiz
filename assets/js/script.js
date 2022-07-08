@@ -249,6 +249,15 @@ function quizOver() {
         main.textContent = highScore;
         quizOver.setAttribute('style', 'display:none');
         result.setAttribute('style', 'display:none');
+        h1El.textContent = "Scores";
+        var btnStartOver = document.createElement("button");
+        btnStartOver.textContent = "Start Over";
+        btnStartOver.className = "buttons";
+        main.appendChild(btnStartOver);
+        btnStartOver.addEventListener("click", function (event) {
+            event.preventDefault();
+            location.reload();
+        });
     });
 }
 
